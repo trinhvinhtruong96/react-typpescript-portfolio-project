@@ -1,14 +1,4 @@
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
+import App from './components/App';
 
-const App = () => {
-    return (
-        <div>
-            <h1>Hi there !</h1>
-        </div>
-    )
-}
-
-ReactDom.render(
-    <App />,
-    document.querySelector('#root')
-);
+ReactDOM.render(<App />, document.querySelector('#root'));
