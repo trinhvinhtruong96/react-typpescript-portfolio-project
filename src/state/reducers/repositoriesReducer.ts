@@ -5,7 +5,12 @@ interface RepositoryState {
 
 }
 
-const reducer = (state: RepositoryState, action: any) => {
+interface Action {
+    type: string;
+    payload?: any
+}
+
+const reducer = (state: RepositoryState, action: Action): RepositoryState => {
     switch (action.type) {
         case 'search_repository':
             return {
