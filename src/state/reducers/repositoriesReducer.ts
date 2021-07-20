@@ -24,24 +24,31 @@ interface SearchRepositoriesErrorAction {
     payload: string
 }
 
+type Action = SearchRepositoriesAction
+    | SearchRepositoriesSuccessAction
+    | SearchRepositoriesErrorAction
+
+enum ActionType {
+    SEARCH_REPOSITORIES = 'search_repositories',
+    SEARCH_REPOSITORIES_SUCCESS = 'search_repositories_success',
+    SEARCH_REPOSITORIES_ERROR = 'search_repositories_error',
+}
+
 const reducer = (
     state: RepositoryState,
-    action:
-        SearchRepositoriesAction
-        | SearchRepositoriesSuccessAction
-        | SearchRepositoriesErrorAction
+    action: Action
 ): RepositoryState
     => {
     switch (action.type) {
-        case 'search_repositories':
+        case ActionType.SEARCH_REPOSITORIES:
             return {
                 loading: true, error: null, data: []
             }
-        case 'search_repositories_success':
+        case ActionType.SEARCH_REPOSITORIES_SUCCESS:
             return {
                 loading: false, error: null, data: action.payload
             }
-        case 'search_repositories_error':
+        case ActionType.SEARCH_REPOSITORIES_ERROR:
             return {
                 loading: false, error: action.payload, data: []
             }
