@@ -1,9 +1,10 @@
+import { Action } from './../actions/index';
 import { ActionType } from './../action-types/index';
 import axios from 'axios';
-import { resourceLimits } from 'worker_threads';
+import { Dispatch } from 'redux';
 
 const searchRepositories = (term: string) => {
-    return async (dispatch: any) => {
+    return async (dispatch: Dispatch<Action>) => {
         dispatch({
             type: ActionType.SEARCH_REPOSITORIES
         })
