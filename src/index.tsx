@@ -1,4 +1,5 @@
 
+import 'bulmaswatch/superhero/bulmaswatch.min.css';
 import * as esbuild from 'esbuild-wasm';
 import { useEffect, useState, useRef } from "react";
 import ReactDOM from "react-dom";
@@ -80,7 +81,9 @@ const App = () => {
             />
             {/* <textarea value={input} onChange={event => setInput(event.target.value)} ></textarea> */}
             <div>
-                <button onClick={onClick}>
+                <button
+                    onClick={onClick}
+                >
                     Submit
                 </button>
             </div>
