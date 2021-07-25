@@ -9,6 +9,7 @@ import Resizable from './resizable';
 const CodeCell = () => {
     const [input, setInput] = useState('');
     const [code, setCode] = useState('');
+    const [err, setErr] = useState('');
 
     // const onClick = async () => {
     //     const output = await bundler(input);
@@ -18,7 +19,8 @@ const CodeCell = () => {
     useEffect(() => {
         const timer = setTimeout(async () => {
             const output = await bundler(input);
-            setCode(output);
+            setCode(output.code);
+            setErr(output.err);
         }, 1000);
 
         return () => {
@@ -42,7 +44,7 @@ const CodeCell = () => {
                         Submit
                     </button>
                 </div> */}
-                <Preview code={code} />
+                <Preview code={code} err={err} />
             </div>
         </Resizable>
     )
