@@ -1,7 +1,7 @@
+import 'bulmaswatch/superhero/bulmaswatch.min.css';
 import MDEditor from '@uiw/react-md-editor';
 import { useEffect, useRef, useState } from 'react';
 import './text-editor.css';
-import 'bulmaswatch/superhero/bulmaswatch.min.css';
 
 const TextEditor: React.FC = () => {
     const ref = useRef<HTMLDivElement | null>(null);
@@ -40,8 +40,6 @@ const TextEditor: React.FC = () => {
                     />
                 </div>
             }
-
-
         </>
     )
 }
