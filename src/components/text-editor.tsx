@@ -2,11 +2,17 @@ import 'bulmaswatch/superhero/bulmaswatch.min.css';
 import MDEditor from '@uiw/react-md-editor';
 import { useEffect, useRef, useState } from 'react';
 import './text-editor.css';
+import { Cell } from '../state';
+import { useActions } from '../hooks/use-actions';
 
-const TextEditor: React.FC = () => {
+interface TextEditorProps {
+    cell: Cell
+}
+
+const TextEditor: React.FC<TextEditorProps> = ({ cell }) => {
     const ref = useRef<HTMLDivElement | null>(null);
-    const [value, setValue] = useState('# Header');
     const [editing, setEditing] = useState(false);
+    const { updateCell } = useActions();
 
     useEffect(() => {
         const listener = (event: MouseEvent) => {
@@ -29,14 +35,14 @@ const TextEditor: React.FC = () => {
                 ?
                 <div className="text-editor" onClick={() => setEditing(true)}>
                     <div className="card-content card">
-                        <MDEditor.Markdown source={value} />
+                        <MDEditor.Markdown source={cell.content || 'Click to edit'} />
                     </div>
                 </div>
                 :
                 <div className="text-editor" ref={ref}>
                     <MDEditor
-                        value={value}
-                        onChange={(value) => { setValue(value || '') }}
+                        value={cell.content}
+                        onChange={(value) => updateCell(cell.id, value || '')}
                     />
                 </div>
             }
