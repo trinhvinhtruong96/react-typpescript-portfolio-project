@@ -1,0 +1,12 @@
+.cell-list-item {
+    position: relative;
+    /* margin: 40px 10px; */
+}
+
+.action-bar-wrapper {
+    /* position: relative;
+    padding-top: 30px; */
+    background-color: #37414b;
+    height: 30px;
+    width: 100%;
+}
