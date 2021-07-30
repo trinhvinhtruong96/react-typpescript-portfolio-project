@@ -1,3 +1,4 @@
+import './cell-list.css'
 import { Fragment } from "react";
 import { useTypeSelector } from "../hooks/use-typed-selector";
 import AddCell from "./add-cell";
@@ -15,7 +16,7 @@ const CellList: React.FC = () => {
     ))
 
     return (
-        <div>
+        <div className="cell-list">
             {renderedCells}
         </div>
     )
