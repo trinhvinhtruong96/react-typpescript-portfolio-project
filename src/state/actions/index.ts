@@ -1,3 +1,4 @@
+import { TypedUseSelectorHook } from 'react-redux';
 import { CellTypes } from '../cell';
 import { ActionType } from '../action-types/index';
 
@@ -32,8 +33,28 @@ export interface UpdateCellAction {
     }
 }
 
+export interface BundleStartAction {
+    type: ActionType.BUNDLE_START,
+    payload: {
+        cellId: string;
+    }
+}
+
+export interface BundleCompleteAction {
+    type: ActionType.BUNDLE_COMPLETE,
+    payload: {
+        cellId: string;
+        bundle: {
+            code: string,
+            err: string
+        }
+    }
+}
+
 export type Action =
     MoveCellAction
     | DeleteCellAction
     | InsertCellAfterAction
-    | UpdateCellAction;
+    | UpdateCellAction
+    | BundleStartAction
+    | BundleCompleteAction;
